@@ -1,12 +1,26 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view @DemoMsg="setDemoMsg"/>
   </div>
 </template>
 
 <script>
+import Demo from '@/components/Demo'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Demo
+  },
+  data: function() {
+    return {
+      DemoFromMsg: ''
+    }
+  },
+  methods: {
+    setDemoMsg: function(data) {
+      this.DemoFromMsg = data
+    }
+  }
 }
 </script>
 

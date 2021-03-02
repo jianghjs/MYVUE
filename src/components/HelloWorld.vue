@@ -2,6 +2,7 @@
   <div class="hello">
     HelloWorld! {{ himsg }}
     <Hi @Msg="setHiMsg" title="父级向子级传递"/>
+    <p>Hello load count : {{ $store.state.count }}</p>
   </div>
 </template>
 
@@ -9,9 +10,11 @@
 import Hi from './Hi'
 
 export default {
+  name: 'Hello',
   data () {
     return {
-      himsg: ''
+      himsg: '',
+      demoMsg: 'Demo message'
     }
   },
   components: {
@@ -20,6 +23,9 @@ export default {
   methods: {
     setHiMsg : function(data) {
       this.himsg = data
+    },
+    getDemoMsg: function(event) {
+      this.$emit('DemoMsg', this.demoMsg)
     }
   }
 }
