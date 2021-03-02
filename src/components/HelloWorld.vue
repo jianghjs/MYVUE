@@ -1,23 +1,25 @@
 <template>
   <div class="hello">
-    HelloWorld!
-    <br/>
-    <el-input v-model="input" style="width:200px;" maxlength="5" placeholder="请输入内容"></el-input>
-    <el-button v-on:click='click'>送信</el-button>
+    HelloWorld! {{ himsg }}
+    <Hi @Msg="setHiMsg" title="父级向子级传递"/>
   </div>
 </template>
 
 <script>
+import Hi from './Hi'
+
 export default {
-  name: 'HelloWorld',
   data () {
     return {
-      input: '123'
+      himsg: ''
     }
   },
+  components: {
+    Hi
+  },
   methods: {
-    click : function() {
-      this.input = 'abc'
+    setHiMsg : function(data) {
+      this.himsg = data
     }
   }
 }
